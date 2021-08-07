@@ -1,0 +1,15 @@
+
+(integer type advantages / string disadvantages):
+
+Although 
+we can assign ID automatically when ID data type is "int" but String cannot do that .(for example, increasing 1 for every creation)
+
+
+
+(integer type disadvantages / string advantages):
+
+I prefer to use String as ID data type.
+Because
+1. "int" is not safe enough when comparing "String". Sometimes, it will loss accuracy when it is too long(too big). Also, since a string is immutable, its value is immutable in java so that String is more safe.
+2. String can save any character, number, special signiture, so, it is more convenient when your ID is not just consisted of number.
+
