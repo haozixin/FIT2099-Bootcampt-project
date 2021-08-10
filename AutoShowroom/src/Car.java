@@ -1,6 +1,12 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Car {
     private String make;
     private String model;
+
+    private ArrayList<Bid> bids;
+
 
     public Car(String make, String model) {
         this.make = make;
@@ -15,9 +21,16 @@ public class Car {
         return model;
     }
 
-    public String getCarDescription(){
+    public String description(){
 
         return  String.format("Maker:%s and Model:%s",getMake(),getModel());
+    }
+
+    public addBid(Buyer newBuyer, String price, String date){
+
+        Bid bid = new Bid();
+        bid.
+        bids.add(bid);
     }
 
 }
