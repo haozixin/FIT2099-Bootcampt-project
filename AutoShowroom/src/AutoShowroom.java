@@ -40,16 +40,17 @@ public class AutoShowroom {
         System.out.print("Have created one buyer instance!");
 
         System.out.print("Do you want to create the buyer's bid and add it to one car? \n type 1 for yes, 0 for no: ");
-        int selection = scanner.nextInt();
+        int selection = Integer.parseInt(scanner.nextLine());
         if (selection ==1){
 
             System.out.print("Please input the date: ");
             String date = scanner.nextLine();
 
             System.out.print("Please input the price: ");
-            Float price = scanner.nextFloat();
+            Float price = Float.parseFloat(scanner.nextLine());
 
             car.addBid(buyer,price,date);
+            System.out.println("Have add bid to the car!");
 
         }else{
             return buyer;
