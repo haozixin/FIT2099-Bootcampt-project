@@ -1,13 +1,18 @@
+import java.util.Scanner;
+
 public class Bid {
     private String bidId;
     private Buyer buyer;
     private float bidPrice;
     private String bidDate;
 
-    public Bid(){};
 
-    public Bid(String bidId, Buyer buyer, float bidPrice, String bidDate) {
-        this.bidId = bidId;
+    public Bid(Buyer buyer, float bidPrice, String bidDate) {
+        Scanner input=new Scanner(System.in);
+        String str=input.nextLine();
+        bidId = str;
+        
+
         this.buyer = buyer;
         this.bidPrice = bidPrice;
         this.bidDate = bidDate;

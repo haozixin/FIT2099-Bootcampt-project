@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Car {
@@ -9,6 +8,7 @@ public class Car {
 
 
     public Car(String make, String model) {
+        bids = new ArrayList<>();
         this.make = make;
         this.model = model;
     }
@@ -26,11 +26,12 @@ public class Car {
         return  String.format("Maker:%s and Model:%s",getMake(),getModel());
     }
 
-    public addBid(Buyer newBuyer, String price, String date){
-
-        Bid bid = new Bid();
-        bid.
+    public void addBid(Buyer newBuyer, Float price, String date){
+        Bid bid = new Bid(newBuyer,price,date);
         bids.add(bid);
     }
 
+    public ArrayList<Bid> getBids() {
+        return bids;
+    }
 }
