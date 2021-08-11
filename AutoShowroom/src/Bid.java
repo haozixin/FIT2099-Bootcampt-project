@@ -8,11 +8,8 @@ public class Bid {
 
 
     public Bid(Buyer buyer, float bidPrice, String bidDate) {
-        Scanner input=new Scanner(System.in);
-        String str=input.nextLine();
-        bidId = str;
-        
 
+        bidId = getBidId();
         this.buyer = buyer;
         this.bidPrice = bidPrice;
         this.bidDate = bidDate;
