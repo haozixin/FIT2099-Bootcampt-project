@@ -1,0 +1,19 @@
+let's assume that refactoring will be expensive – as much as possible, avoid modifying existing code, 
+changing existing system structure, or changing attributes in the existing system.
+The method shouldn't be Buyer class, because every Buyer is independent, there is no means that put the method in Buyer class unless change its structure to let Buyers associate each other.
+Of course shouldn't in AutoShowroomDriver, Bid, and Car classes.
+
+The method should be AutoShowroom it is the place to store and display the buyer information. Like reflecting real world, every buyer would appear in ShowRoom.
+To implement it, 
+
+Firstly, we have to make a private attribute which is a Buyer class type ArrayList. (because we have to show all buyers, and no duplicated.  // Although every Bid contain a Buyer, we cannot guarantee that each Buyer has a bid and there is no two bids from same person)
+ 
+Then, create a methods called addBuyer(), which is responsible for add buyers to ArrayList.
+Basically we need to make the buyerID unique in the arrayList. So, in the function, use a loop to check before adding, if the buyer ID user entered has already existed, then the arrayList should not add new buyer but modify it based on previous buyer.
+After you create a Buyer (maybe through a separate function or just within any function to new Buyer(.....) ), you have to put it into ArrayList by calling addBuyer(). (this step can guarantee we collect all Buyers)
+
+When displaying, the information is about the buyer's full name and his/her bid history.  To do that, we need to make a loop to get the buyer instance in the buyer arraylist each iteration and 
+show their name and buyerID using the instance function "description()".  To display bidID, it is necessary to use a for loop to find the bid's buyer with the same buyerID of current buyer instance.
+
+That's all.
+

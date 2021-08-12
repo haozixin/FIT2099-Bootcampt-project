@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class Car {
     private String make;
     private String model;
-
     private ArrayList<Bid> bids;
 
 
@@ -11,6 +10,7 @@ public class Car {
         bids = new ArrayList<>();
         this.make = make;
         this.model = model;
+
     }
 
     public String getMake() {
@@ -27,7 +27,9 @@ public class Car {
     }
 
     public void addBid(Buyer newBuyer, Float price, String date){
-        Bid bid = new Bid(newBuyer,price,date);
+
+        String bidId = String.valueOf((int)(Math.random()*1000000));
+        Bid bid = new Bid(bidId,newBuyer,price,date);
         bids.add(bid);
     }
 

@@ -7,9 +7,10 @@ public class Bid {
     private String bidDate;
 
 
-    public Bid(Buyer buyer, float bidPrice, String bidDate) {
 
-        bidId = getBidId();
+    public Bid(String bidId,Buyer buyer, float bidPrice, String bidDate) {
+
+        this.bidId = bidId;
         this.buyer = buyer;
         this.bidPrice = bidPrice;
         this.bidDate = bidDate;

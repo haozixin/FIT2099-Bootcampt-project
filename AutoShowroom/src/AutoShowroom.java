@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class AutoShowroom {
 
-    ArrayList<Car> carArrayList;
+    private ArrayList<Car> carArrayList;
 
     public AutoShowroom() {
         carArrayList = new ArrayList<>();
@@ -18,8 +18,8 @@ public class AutoShowroom {
         carArrayList.add(car3);
 
 
-        Buyer buyer1 = consoleCreator(car1);
-        Buyer buyer2 = consoleCreator(car1);
+        consoleCreator(car1);//create buyer and then create bid and add it to the car
+        consoleCreator(car1);
 
 
     }
