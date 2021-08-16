@@ -1,7 +1,7 @@
 let's assume that refactoring will be expensive – as much as possible, avoid modifying existing code, 
 changing existing system structure, or changing attributes in the existing system.
 The method shouldn't be Buyer class, because every Buyer is independent, there is no means that put the method in Buyer class unless change its structure to let Buyers associate each other.
-Of course shouldn't in AutoShowroomDriver, Bid, and Car classes.
+Of course shouldn't in AutoShowroomDriver, Bid, and Vehicle classes.
 
 The method should be AutoShowroom it is the place to store and display the buyer information. Like reflecting real world, every buyer would appear in ShowRoom.
 To implement it, 

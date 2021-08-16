@@ -3,30 +3,30 @@ import java.util.Scanner;
 
 public class AutoShowroom {
 
-    private ArrayList<Car> carArrayList;
+    private ArrayList<Vehicle> vehicleArrayList;
 
     public AutoShowroom() {
-        carArrayList = new ArrayList<>();
+        vehicleArrayList = new ArrayList<>();
     }
 
     public void createCars(){
-        Car car1 = new Car("BMW","X7");
-        Car car2 = new Car("Audi","A8");
-        Car car3 = new Car("Mercedes","GLS");
-        carArrayList.add(car1);
-        carArrayList.add(car2);
-        carArrayList.add(car3);
+        Vehicle vehicle1 = new Sedan("BMW","X7",5);
+        Vehicle vehicle2 = new Sedan("Audi","A8",5);
+        Vehicle vehicle3 = new Sedan("Mercedes","GLS",5);
+        vehicleArrayList.add(vehicle1);
+        vehicleArrayList.add(vehicle2);
+        vehicleArrayList.add(vehicle3);
 
 
-        consoleCreator(car1);//create buyer and then create bid and add it to the car
-        consoleCreator(car1);
+        consoleCreator(vehicle1);//create buyer and then create bid and add it to the car
+        consoleCreator(vehicle1);
 
 
     }
 
 
 
-    public Buyer consoleCreator(Car car){
+    public Buyer consoleCreator(Vehicle vehicle){
 
         System.out.print("You are creating a buyer, fill information please!");
         Scanner scanner = new Scanner(System.in);
@@ -49,7 +49,7 @@ public class AutoShowroom {
             System.out.print("Please input the price: ");
             Float price = Float.parseFloat(scanner.nextLine());
 
-            car.addBid(buyer,price,date);
+            vehicle.addBid(buyer,price,date);
             System.out.println("Have add bid to the car!");
 
         }else{
@@ -59,20 +59,20 @@ public class AutoShowroom {
     }
 
     public void displayCars(){
-        for(int i = 0; i< carArrayList.size(); i++){
-            Car car = carArrayList.get(i);
+        for(int i = 0; i< vehicleArrayList.size(); i++){
+            Vehicle vehicle = vehicleArrayList.get(i);
             ArrayList<String> aL=new ArrayList<>();
 
-            for (Bid bidPointer:car.getBids()){
+            for (Bid bidPointer: vehicle.getBids()){
                 String bidInformation ="BidID: "+bidPointer.getBidId()+"; BidPrice: "+bidPointer.getBidPrice()
                         +"; BidDate: "+bidPointer.getBidDate();
                 String buyerInformation = "; Buyer: "+bidPointer.getBuyer().description();
                 aL.add(bidInformation+buyerInformation);
             }
             if (aL.isEmpty()){
-                System.out.println("Car ("+(i+1)+") "+ car.description()+"------- No bids and buyers now");
+                System.out.println("Car ("+(i+1)+") "+ vehicle.description()+"------- No bids and buyers now");
             }else{
-                System.out.println("Car ("+(i+1)+") "+ car.description()+" ------- "+ aL);
+                System.out.println("Car ("+(i+1)+") "+ vehicle.description()+" ------- "+ aL);
             }
 
 
