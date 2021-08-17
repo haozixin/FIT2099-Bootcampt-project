@@ -1,6 +1,7 @@
 import edu.monash.fit2099.bids.Bid;
 import edu.monash.fit2099.buyers.Buyer;
 import edu.monash.fit2099.vehicles.Sedan;
+import edu.monash.fit2099.vehicles.Truck;
 import edu.monash.fit2099.vehicles.Vehicle;
 
 import java.util.ArrayList;
@@ -9,12 +10,75 @@ import java.util.Scanner;
 public class AutoShowroom {
 
     private ArrayList<Vehicle> vehicleArrayList;
+    //task4(|||)
+    private ArrayList<Buyer> buyerArrayList;
 
     public AutoShowroom() {
         vehicleArrayList = new ArrayList<>();
+        buyerArrayList = new ArrayList<>();
     }
 
-    public void createCars() {
+    public void createSedan(){
+        System.out.println("You are creating a Sedan, fill details please!");
+        System.out.print("Sedan maker: ");
+        Scanner scanner = new Scanner(System.in);
+        String maker = scanner.nextLine();
+        System.out.print("Sedan model: ");
+        String model = scanner.nextLine();
+        System.out.print("Sedan seats: ");
+        int seats = Integer.parseInt(scanner.nextLine());
+        Sedan sedan = new Sedan(maker,model,seats);
+        vehicleArrayList.add(sedan);
+    }
+
+    public void createTruck(){
+        System.out.println("You are creating a Truck, fill details please!");
+        System.out.print("Truck maker: ");
+        Scanner scanner = new Scanner(System.in);
+        String maker = scanner.nextLine();
+        System.out.print("Truck model: ");
+        String model = scanner.nextLine();
+        System.out.print("Truck wheels: ");
+        int wheels = Integer.parseInt(scanner.nextLine());
+        System.out.print("Truck capacity: ");
+        int capacity = Integer.parseInt(scanner.nextLine());
+        Truck truck = new Truck(maker,model,capacity,wheels);
+        vehicleArrayList.add(truck);
+    }
+
+    public void createBuyer(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You are creating a Buyer, fill details please!");
+        System.out.print("Buyer ID: ");
+        String id = scanner.nextLine();
+        System.out.print("Given name: ");
+        String givenName = scanner.nextLine();
+        System.out.print("Family Name: ");
+        String familyName = scanner.nextLine();
+        Buyer buyer = new Buyer(id,givenName,familyName);
+        buyerArrayList.add(buyer);
+    }
+
+    public void createBid(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You are creating a bid, fill details please!");
+        System.out.println("Vehicle ID: ");
+        int vId = Integer.parseInt(scanner.nextLine());
+        System.out.print("Buyer ID: ");
+        String buyerId = scanner.nextLine();
+        System.out.print("Bid price: ");
+        String price = scanner.nextLine();
+        System.out.print("Bid date: ");
+        String date = scanner.nextLine();
+
+
+    }
+
+    public void displayFleet(){}
+    public void displayBuyers(){}
+
+    // previous work
+ /*   public void createCars() {
         Vehicle vehicle1 = new Sedan("BMW", "X7", 5);
         Vehicle vehicle2 = new Sedan("Audi", "A8", 5);
         Vehicle vehicle3 = new Sedan("Mercedes", "GLS", 5);
@@ -84,7 +148,7 @@ public class AutoShowroom {
 
         }
     }
-
+*/
     public void printStatus() {
 
         System.out.println("Welcome to FIT2099 Showroom");

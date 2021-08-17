@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BidsManager {
-
+//    private ArrayList<Bid> bidList;
     HashMap<String,Bid> bidHashMap;
 
     public BidsManager() {
