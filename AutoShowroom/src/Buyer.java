@@ -25,7 +25,10 @@ public class Buyer {
     }
 
     public String description(){
-        String description = buyerId+" "+givenName+" "+familyName;
-        return description;
+        return buyerId+" "+givenName+" "+familyName;
+    }
+
+    public String getBuyerId() {
+        return buyerId;
     }
 }

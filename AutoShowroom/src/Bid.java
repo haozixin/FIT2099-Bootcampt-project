@@ -8,7 +8,7 @@ public class Bid {
 
 
 
-    public Bid(String bidId,Buyer buyer, float bidPrice, String bidDate) {
+    public Bid(String bidId, Buyer buyer, float bidPrice, String bidDate) {
 
         this.bidId = bidId;
         this.buyer = buyer;

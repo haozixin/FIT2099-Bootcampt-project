@@ -4,12 +4,12 @@ import java.util.Random;
 abstract public class Vehicle {
     private String make;
     private String model;
-    private ArrayList<Bid> bids;
     private int vId;
+    private BidsManager bidsManager;
     
     public Vehicle(String make, String model) {
         vId = this.nextID();
-        bids = new ArrayList<>();
+        bidsManager = new BidsManager();
         this.make = make;
         this.model = model;
 
@@ -18,7 +18,7 @@ abstract public class Vehicle {
         this.make = make;
         this.model = model;
         this.vId = vId;
-        bids = new ArrayList<>();
+        bidsManager = new BidsManager();
     }
 
     public String getMake() {
@@ -34,13 +34,12 @@ abstract public class Vehicle {
         return  String.format("Maker:%s and Model:%s",getMake(),getModel());
     }
 
+    //accepting the three parameter is requirement
     public void addBid(Buyer newBuyer, Float price, String date){
 
-
-        String bidId = String.valueOf((int)(Math.random()*1000000));
-        Bid bid = new Bid(bidId,newBuyer,price,date);
-        bids.add(bid);
+        bidsManager.addBid(newBuyer.getBuyerId(),price,date);
     }
+
     public int nextID(){
         Random r = new Random();
         int low = 100000;//using literal values is not a good idea, replace them with input parameters
@@ -48,7 +47,4 @@ abstract public class Vehicle {
         return (r.nextInt(high - low) + low);
     }
 
-    public ArrayList<Bid> getBids() {
-        return bids;
-    }
 }
