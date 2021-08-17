@@ -1,8 +1,13 @@
+package edu.monash.fit2099.bids;
+
+import edu.monash.fit2099.bids.Bid;
+import edu.monash.fit2099.buyers.Buyer;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BidsManager {
-    private ArrayList<Bid> bidList;
+
     HashMap<String,Bid> bidHashMap;
 
     public BidsManager() {
@@ -15,5 +20,9 @@ public class BidsManager {
         String bidId = String.valueOf((int)(Math.random()*1000000));
         Bid bid = new Bid(bidId, buyer, bidPrice, bidDate);
         bidHashMap.put(buyerId,bid);
+    }
+
+    public HashMap<String, Bid> getBidHashMap() {
+        return bidHashMap;
     }
 }

@@ -1,4 +1,8 @@
-public class Truck extends Vehicle{
+package edu.monash.fit2099.vehicles;
+
+import edu.monash.fit2099.vehicles.Vehicle;
+
+public class Truck extends Vehicle {
     private int capacity;
     private int wheels;
 

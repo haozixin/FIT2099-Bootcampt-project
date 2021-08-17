@@ -1,3 +1,7 @@
+package edu.monash.fit2099.bids;
+
+import edu.monash.fit2099.buyers.Buyer;
+
 import java.util.Scanner;
 
 public class Bid {

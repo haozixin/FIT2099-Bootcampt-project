@@ -1,3 +1,8 @@
+package edu.monash.fit2099.vehicles;
+
+import edu.monash.fit2099.bids.BidsManager;
+import edu.monash.fit2099.buyers.Buyer;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -47,4 +52,7 @@ abstract public class Vehicle {
         return (r.nextInt(high - low) + low);
     }
 
+    public BidsManager getBidsManager() {
+        return bidsManager;
+    }
 }

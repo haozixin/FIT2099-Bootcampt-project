@@ -1,3 +1,5 @@
+package edu.monash.fit2099.buyers;
+
 public class Buyer {
     private String buyerId;
     // Because some people have middle name, so, using "givenName" and "familyName" is exact.

@@ -1,4 +1,6 @@
-public class Sedan extends Vehicle{
+package edu.monash.fit2099.vehicles;
+
+public class Sedan extends Vehicle {
     private int seats;
 
     public Sedan(String make, String model, int seats) {
