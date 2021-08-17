@@ -5,7 +5,9 @@ import edu.monash.fit2099.vehicles.Truck;
 import edu.monash.fit2099.vehicles.Vehicle;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
 
 public class AutoShowroom {
 
@@ -29,6 +31,8 @@ public class AutoShowroom {
         int seats = Integer.parseInt(scanner.nextLine());
         Sedan sedan = new Sedan(maker,model,seats);
         vehicleArrayList.add(sedan);
+
+        showVehicle(sedan);
     }
 
     public void createTruck(){
@@ -40,10 +44,12 @@ public class AutoShowroom {
         String model = scanner.nextLine();
         System.out.print("Truck wheels: ");
         int wheels = Integer.parseInt(scanner.nextLine());
-        System.out.print("Truck capacity: ");
+        System.out.print("Truck capacity(integer/unit is tons): ");
         int capacity = Integer.parseInt(scanner.nextLine());
         Truck truck = new Truck(maker,model,capacity,wheels);
         vehicleArrayList.add(truck);
+
+        showVehicle(truck);
     }
 
     public void createBuyer(){
@@ -55,37 +61,66 @@ public class AutoShowroom {
         String familyName = scanner.nextLine();
         Buyer buyer = new Buyer(givenName,familyName);
         buyerArrayList.add(buyer);
+
+        System.out.println(buyer.description());
     }
 
     public void createBid(){
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("You are creating a bid, fill details please!");
-        System.out.println("Vehicle ID: ");
+        System.out.print("Vehicle ID: ");
         int vId = Integer.parseInt(scanner.nextLine());
         System.out.print("Buyer ID: ");
         String buyerId = scanner.nextLine();
-        System.out.print("Bid price: ");
+        System.out.print("Bid price(unit is thousands): ");
         float price = Float.parseFloat(scanner.nextLine());
         System.out.print("Bid date: ");
         String date = scanner.nextLine();
 
         for(Vehicle pointer:vehicleArrayList){
-            if (vId == pointer.getVId()){
+            if (vId == (pointer.getVId())){
                 pointer.getBidsManager().addBid(buyerId,price,date);
-            }else {}
+                System.out.println("Have added this bid!");
+            }else {
+            }
         }
 
+
+    }
+    public void showVehicle(Vehicle vehicle){
+        HashMap bidHashMap = vehicle.getBidsManager().getBidHashMap();
+        String vId = "Vehicle ID: "+vehicle.getVId();
+        String vMake = "Make: "+vehicle.getMake();
+        String vModel = "Model: "+vehicle.getModel();
+        if (bidHashMap.isEmpty()){
+            System.out.println(("[ "+vehicle.description()+" ]: {no bid now} "));
+        }
+        else{
+            System.out.println(("[ "+vehicle.description()+" ]: "));
+            for (Object key:bidHashMap.keySet()) {
+                String buyerId = (String) key;
+                Bid bid = (Bid) bidHashMap.get(buyerId);
+                String bidInf = "{BidID："+bid.getBidId()+" || BuyerID: "+buyerId+
+                        " || BideDate: " +bid.getBidDate()+ " || BidPrice: "+bid.getBidPrice()+"}";
+                System.out.println(bidInf);
+            }
+
+        }
     }
 
     public void displayFleet(){
         for(Vehicle pointer:vehicleArrayList){
-            System.out.println();
+            showVehicle(pointer);
         }
     }
     public void displayBuyers(){
+        for(Buyer buyer:buyerArrayList){
+            System.out.println(buyer.description());
+        }
 
     }
+
 
     // previous work
  /*   public void createCars() {

@@ -12,4 +12,5 @@ public class Sedan extends Vehicle {
         super(vId, make, model);
         this.seats = seats;
     }
+
 }

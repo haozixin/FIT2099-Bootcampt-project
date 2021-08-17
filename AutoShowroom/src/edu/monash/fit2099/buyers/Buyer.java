@@ -35,7 +35,7 @@ public class Buyer {
     }
 
     public String description(){
-        return buyerId+" "+givenName+" "+familyName;
+        return buyerId+" | "+givenName+" | "+familyName;
     }
 
     public String getBuyerId() {

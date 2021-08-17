@@ -39,7 +39,7 @@ abstract public class Vehicle {
     }
 
     public String description(){
-        return  String.format("Maker:%s and Model:%s",getMake(),getModel());
+        return  String.format("Vehicle ID:%s || Maker:%s || Model:%s",getVId(), getMake(),getModel());
     }
 
     //accepting the three parameter is requirement

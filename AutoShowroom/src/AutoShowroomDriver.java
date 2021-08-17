@@ -3,16 +3,30 @@ import java.util.Scanner;
 public class AutoShowroomDriver {
     public static void main(String[] args) {
         AutoShowroom autoShowroom = new AutoShowroom();
+
         int selection;
         do{
             selection = selectMenuItem();
             switch (selection){
                 case 1:
-                    //......
+                    autoShowroom.createSedan();
                     break;
                 case 2:
-                    //......
+                    autoShowroom.createTruck();
                     break;
+                case 3:
+                    autoShowroom.displayFleet();
+                    break;
+                case 4:
+                    autoShowroom.createBuyer();
+                    break;
+                case 5:
+                    autoShowroom.displayBuyers();
+                    break;
+                case 6:
+                    autoShowroom.createBid();
+                    break;
+
             }
         }while (selection!=7);
 
