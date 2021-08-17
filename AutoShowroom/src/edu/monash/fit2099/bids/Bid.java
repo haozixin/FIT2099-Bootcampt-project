@@ -2,19 +2,20 @@ package edu.monash.fit2099.bids;
 
 import edu.monash.fit2099.buyers.Buyer;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Bid {
     private String bidId;
     private Buyer buyer;
-    private float bidPrice;
+    private float bidPrice; //since assuming the unit of price is "Thousands"
     private String bidDate;
 
 
 
-    public Bid(String bidId, Buyer buyer, float bidPrice, String bidDate) {
+    public Bid(Buyer buyer, float bidPrice, String bidDate) {
 
-        this.bidId = bidId;
+        this.bidId = nextID();
         this.buyer = buyer;
         this.bidPrice = bidPrice;
         this.bidDate = bidDate;
@@ -50,5 +51,11 @@ public class Bid {
 
     public String getBidDate() {
         return bidDate;
+    }
+    public String nextID(){
+        Random r = new Random();
+        int low = 100000;//using literal values is not a good idea, replace them with input parameters
+        int high = 999999;
+        return String.valueOf(r.nextInt(high - low) + low);
     }
 }

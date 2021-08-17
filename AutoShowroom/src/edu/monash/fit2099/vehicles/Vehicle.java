@@ -34,14 +34,16 @@ abstract public class Vehicle {
         return model;
     }
 
-    public String description(){
+    public int getVId() {
+        return vId;
+    }
 
+    public String description(){
         return  String.format("Maker:%s and Model:%s",getMake(),getModel());
     }
 
     //accepting the three parameter is requirement
     public void addBid(Buyer newBuyer, Float price, String date){
-
         bidsManager.addBid(newBuyer.getBuyerId(),price,date);
     }
 

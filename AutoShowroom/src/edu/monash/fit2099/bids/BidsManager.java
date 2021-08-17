@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BidsManager {
-//    private ArrayList<Bid> bidList;
+
     HashMap<String,Bid> bidHashMap;
 
     public BidsManager() {
@@ -17,8 +17,7 @@ public class BidsManager {
     //accepting the three parameter is requirement
     public void addBid (String buyerId, float bidPrice, String bidDate){
         Buyer buyer = new Buyer(buyerId);
-        String bidId = String.valueOf((int)(Math.random()*1000000));
-        Bid bid = new Bid(bidId, buyer, bidPrice, bidDate);
+        Bid bid = new Bid(buyer, bidPrice, bidDate);
         bidHashMap.put(buyerId,bid);
     }
 

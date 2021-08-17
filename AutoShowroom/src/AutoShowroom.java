@@ -49,17 +49,16 @@ public class AutoShowroom {
     public void createBuyer(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("You are creating a Buyer, fill details please!");
-        System.out.print("Buyer ID: ");
-        String id = scanner.nextLine();
         System.out.print("Given name: ");
         String givenName = scanner.nextLine();
         System.out.print("Family Name: ");
         String familyName = scanner.nextLine();
-        Buyer buyer = new Buyer(id,givenName,familyName);
+        Buyer buyer = new Buyer(givenName,familyName);
         buyerArrayList.add(buyer);
     }
 
     public void createBid(){
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("You are creating a bid, fill details please!");
         System.out.println("Vehicle ID: ");
@@ -67,15 +66,26 @@ public class AutoShowroom {
         System.out.print("Buyer ID: ");
         String buyerId = scanner.nextLine();
         System.out.print("Bid price: ");
-        String price = scanner.nextLine();
+        float price = Float.parseFloat(scanner.nextLine());
         System.out.print("Bid date: ");
         String date = scanner.nextLine();
 
+        for(Vehicle pointer:vehicleArrayList){
+            if (vId == pointer.getVId()){
+                pointer.getBidsManager().addBid(buyerId,price,date);
+            }else {}
+        }
 
     }
 
-    public void displayFleet(){}
-    public void displayBuyers(){}
+    public void displayFleet(){
+        for(Vehicle pointer:vehicleArrayList){
+            System.out.println();
+        }
+    }
+    public void displayBuyers(){
+
+    }
 
     // previous work
  /*   public void createCars() {
@@ -153,8 +163,8 @@ public class AutoShowroom {
 
         System.out.println("Welcome to FIT2099 Showroom");
         System.out.println("Thank you for visiting FIT2099 Showroom");
-        createCars();
-        displayCars();
+        //createCars();
+        //displayCars();
         System.out.println("Thank you for visiting FIT2099 Showroom");
 
     }
