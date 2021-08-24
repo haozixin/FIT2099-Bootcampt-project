@@ -38,14 +38,14 @@ abstract public class Vehicle {
         return vId;
     }
 
-    public String description(){
+    /*public String description(){
         return  String.format("Vehicle ID:%s || Maker:%s || Model:%s",getVId(), getMake(),getModel());
     }
 
     //accepting the three parameter is requirement
     public void addBid(Buyer newBuyer, Float price, String date){
         bidsManager.addBid(newBuyer.getBuyerId(),price,date);
-    }
+    }*/
 
     public int nextID(){
         Random r = new Random();
