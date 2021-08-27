@@ -2,9 +2,7 @@
 package edu.monash.fit2099.buyers;
 import edu.monash.fit2099.utility.GenerateId;
 
-
-
-
+import static edu.monash.fit2099.utility.CheckValid.buyerValidLength;
 
 
 public class Buyer {
@@ -32,13 +30,24 @@ public class Buyer {
         this.familyName = newFamilyName;
     }
 
-    public void setGivenName(String givenName) {
-        this.givenName = givenName;
+    public boolean setGivenName(String givenName) {
+        boolean isValid =  buyerValidLength(givenName);
+        if (isValid){
+            this.givenName = givenName;
+        }
+        return isValid;
+
     }
 
-    public void setFamilyName(String familyName) {
-        this.familyName = familyName;
+    public boolean setFamilyName(String familyName) {
+        boolean isValid =  buyerValidLength(familyName);
+        if (isValid){
+            this.familyName = familyName;
+        }
+        return isValid;
     }
+
+
 
 
     public String getBuyerId() {

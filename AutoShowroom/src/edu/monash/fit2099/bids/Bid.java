@@ -3,6 +3,8 @@ package edu.monash.fit2099.bids;
 import edu.monash.fit2099.buyers.Buyer;
 import edu.monash.fit2099.utility.GenerateId;
 
+import static edu.monash.fit2099.utility.CheckValid.*;
+
 public class Bid {
     private String bidId;
     private Buyer buyer;
@@ -27,12 +29,26 @@ public class Bid {
         this.buyer = buyer;
     }
 
-    public void setBidPrice(float bidPrice) {
-        this.bidPrice = bidPrice;
+    public boolean setBidPrice(float bidPrice) {
+        boolean isValid=false;
+        if (bidPrice>=0){
+            isValid = true;
+            this.bidPrice = bidPrice;
+        }
+        return isValid;
     }
 
-    public void setBidDate(String bidDate) {
-        this.bidDate = bidDate;
+    public boolean setBidDate(String bidDate) {
+        boolean isValid = false;
+        boolean isLegalDate = isLegalDate(bidDate.length(),bidDate,"yyyy-MM-dd");
+        boolean rightYearRange = yearRange(bidDate);
+
+        if (isLegalDate && rightYearRange){
+            isValid = true;
+            this.bidDate = bidDate;
+        }
+        return isValid;
+
     }
 
     public String getBidId() {

@@ -4,6 +4,8 @@ import edu.monash.fit2099.bids.BidsManager;
 import edu.monash.fit2099.buyers.Buyer;
 import edu.monash.fit2099.utility.GenerateId;
 
+import static edu.monash.fit2099.utility.CheckValid.vehicleValidLength;
+
 abstract public class Vehicle {
     private String make;
     private String model;
@@ -22,6 +24,22 @@ abstract public class Vehicle {
         this.model = model;
         this.vId = vId;
         bidsManager = new BidsManager();
+    }
+
+    public boolean setMake(String make) {
+        boolean isValid =  vehicleValidLength(make);
+        if (isValid){
+            this.make = make;
+        }
+        return isValid;
+    }
+
+    public boolean setModel(String model) {
+        boolean isValid =  vehicleValidLength(model);
+        if (isValid){
+            this.model = model;
+        }
+        return isValid;
     }
 
     public String getMake() {
