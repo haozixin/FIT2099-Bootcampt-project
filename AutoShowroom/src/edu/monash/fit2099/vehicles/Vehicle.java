@@ -2,24 +2,22 @@ package edu.monash.fit2099.vehicles;
 
 import edu.monash.fit2099.bids.BidsManager;
 import edu.monash.fit2099.buyers.Buyer;
-
-import java.util.ArrayList;
-import java.util.Random;
+import edu.monash.fit2099.utility.GenerateId;
 
 abstract public class Vehicle {
     private String make;
     private String model;
-    private int vId;
+    private String vId;
     private BidsManager bidsManager;
     
     public Vehicle(String make, String model) {
-        vId = this.nextID();
+        vId = GenerateId.nextID();
         bidsManager = new BidsManager();
         this.make = make;
         this.model = model;
 
     }
-    public Vehicle(int vId, String make, String model){
+    public Vehicle(String vId, String make, String model){
         this.make = make;
         this.model = model;
         this.vId = vId;
@@ -34,25 +32,24 @@ abstract public class Vehicle {
         return model;
     }
 
-    public int getVId() {
+    public String getVId() {
         return vId;
     }
 
-    /*public String description(){
-        return  String.format("Vehicle ID:%s || Maker:%s || Model:%s",getVId(), getMake(),getModel());
+    @Override
+    public String toString() {
+        return "Vehicle[" +
+                "make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", vId='" + vId + '\'' +
+                ']';
     }
 
     //accepting the three parameter is requirement
     public void addBid(Buyer newBuyer, Float price, String date){
         bidsManager.addBid(newBuyer.getBuyerId(),price,date);
-    }*/
-
-    public int nextID(){
-        Random r = new Random();
-        int low = 100000;//using literal values is not a good idea, replace them with input parameters
-        int high = 999999;
-        return (r.nextInt(high - low) + low);
     }
+
 
     public BidsManager getBidsManager() {
         return bidsManager;

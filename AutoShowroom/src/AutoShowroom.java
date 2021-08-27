@@ -7,7 +7,6 @@ import edu.monash.fit2099.vehicles.Vehicle;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Set;
 
 public class AutoShowroom {
 
@@ -62,7 +61,7 @@ public class AutoShowroom {
         Buyer buyer = new Buyer(givenName,familyName);
         buyerArrayList.add(buyer);
 
-        System.out.println(buyer.description());
+        System.out.println(buyer);
     }
 
     public void createBid(){
@@ -70,7 +69,7 @@ public class AutoShowroom {
         Scanner scanner = new Scanner(System.in);
         System.out.println("You are creating a bid, fill details please!");
         System.out.print("Vehicle ID: ");
-        int vId = Integer.parseInt(scanner.nextLine());
+        String vId = scanner.nextLine();
         System.out.print("Buyer ID: ");
         String buyerId = scanner.nextLine();
         System.out.print("Bid price(unit is thousands): ");
@@ -79,7 +78,7 @@ public class AutoShowroom {
         String date = scanner.nextLine();
 
         for(Vehicle pointer:vehicleArrayList){
-            if (vId == (pointer.getVId())){
+            if (vId.equals (pointer.getVId())){
                 pointer.getBidsManager().addBid(buyerId,price,date);
                 System.out.println("Have added this bid!");
             }else {
@@ -90,20 +89,17 @@ public class AutoShowroom {
     }
     public void showVehicle(Vehicle vehicle){
         HashMap bidHashMap = vehicle.getBidsManager().getBidHashMap();
-        String vId = "Vehicle ID: "+vehicle.getVId();
-        String vMake = "Make: "+vehicle.getMake();
-        String vModel = "Model: "+vehicle.getModel();
+
+
         if (bidHashMap.isEmpty()){
-            System.out.println(("[ "+vehicle.description()+" ]: {no bid now} "));
+            System.out.println(vehicle+" : {no bid now} ");
         }
         else{
-            System.out.println(("[ "+vehicle.description()+" ]: "));
+            System.out.println(vehicle+" :");
             for (Object key:bidHashMap.keySet()) {
                 String buyerId = (String) key;
                 Bid bid = (Bid) bidHashMap.get(buyerId);
-                String bidInf = "{BidID："+bid.getBidId()+" || BuyerID: "+buyerId+
-                        " || BideDate: " +bid.getBidDate()+ " || BidPrice: "+bid.getBidPrice()+"}";
-                System.out.println(bidInf);
+                System.out.println(bid);
             }
 
         }
@@ -116,7 +112,7 @@ public class AutoShowroom {
     }
     public void displayBuyers(){
         for(Buyer buyer:buyerArrayList){
-            System.out.println(buyer.description());
+            System.out.println(buyer);
         }
 
     }

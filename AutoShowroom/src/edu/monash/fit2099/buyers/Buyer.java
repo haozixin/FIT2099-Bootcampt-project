@@ -1,6 +1,11 @@
-package edu.monash.fit2099.buyers;
 
-import java.util.Random;
+package edu.monash.fit2099.buyers;
+import edu.monash.fit2099.utility.GenerateId;
+
+
+
+
+
 
 public class Buyer {
     private String buyerId;
@@ -9,6 +14,7 @@ public class Buyer {
     // Variable name of "firstName/lastName" is not meaningful enough.
     private String givenName;
     private String familyName;
+
 
     public Buyer(String newBuyerId) {
         this.buyerId = newBuyerId;
@@ -21,7 +27,7 @@ public class Buyer {
     }
 
     public Buyer(String newGivenName, String newFamilyName){
-        this.buyerId = nextID();
+        this.buyerId = GenerateId.nextID();
         this.givenName = newGivenName;
         this.familyName = newFamilyName;
     }
@@ -34,18 +40,17 @@ public class Buyer {
         this.familyName = familyName;
     }
 
-    public String description(){
-        return buyerId+" | "+givenName+" | "+familyName;
-    }
 
     public String getBuyerId() {
         return buyerId;
     }
 
-    public String nextID(){
-        Random r = new Random();
-        int low = 100000;//using literal values is not a good idea, replace them with input parameters
-        int high = 999999;
-        return String.valueOf(r.nextInt(high - low) + low);
+    @Override
+    public String toString() {
+        return "Buyer{" +
+                "buyerId='" + buyerId + '\'' +
+                ", givenName='" + givenName + '\'' +
+                ", familyName='" + familyName + '\'' +
+                '}';
     }
 }

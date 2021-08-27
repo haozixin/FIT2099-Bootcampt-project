@@ -1,9 +1,7 @@
 package edu.monash.fit2099.bids;
 
 import edu.monash.fit2099.buyers.Buyer;
-
-import java.util.Random;
-import java.util.Scanner;
+import edu.monash.fit2099.utility.GenerateId;
 
 public class Bid {
     private String bidId;
@@ -15,7 +13,7 @@ public class Bid {
 
     public Bid(Buyer buyer, float bidPrice, String bidDate) {
 
-        this.bidId = nextID();
+        this.bidId = GenerateId.nextID();
         this.buyer = buyer;
         this.bidPrice = bidPrice;
         this.bidDate = bidDate;
@@ -52,10 +50,14 @@ public class Bid {
     public String getBidDate() {
         return bidDate;
     }
-    public String nextID(){
-        Random r = new Random();
-        int low = 100000;//using literal values is not a good idea, replace them with input parameters
-        int high = 999999;
-        return String.valueOf(r.nextInt(high - low) + low);
+
+    @Override
+    public String toString() {
+        return "Bid{" +
+                "bidId='" + bidId + '\'' +
+                ", buyer=" + buyer +
+                ", bidPrice=" + bidPrice +
+                ", bidDate='" + bidDate + '\'' +
+                '}';
     }
 }
