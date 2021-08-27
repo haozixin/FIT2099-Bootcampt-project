@@ -7,6 +7,9 @@ import java.util.HashMap;
 
 public class BidsManager {
 
+    /**
+     * HashMap contains Bid as value, Buyer's ID(String) as key
+     */
     HashMap<String,Bid> bidHashMap;
 
     public BidsManager() {
@@ -18,6 +21,9 @@ public class BidsManager {
         Bid bid = new Bid(buyer, bidPrice, bidDate);
         bidHashMap.put(buyer.getBuyerId(),bid);
     }
+
+
+
 
     public HashMap<String, Bid> getBidHashMap() {
         return bidHashMap;

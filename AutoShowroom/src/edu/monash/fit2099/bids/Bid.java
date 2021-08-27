@@ -7,9 +7,22 @@ import edu.monash.fit2099.utils.GenerateId;
 import static edu.monash.fit2099.utils.CheckValid.*;
 
 public class Bid {
+
+    /**
+     * Unique Bid ID
+     */
     private String bidId;
+    /**
+     * Buyer type(reference dataType)  as a Bid class attribute
+     */
     private Buyer buyer;
+    /**
+     * The price of the bid
+     */
     private float bidPrice; //since assuming the unit of price is "Thousands"
+    /**
+     * The date when the bid is biding(created)
+     */
     private String bidDate;
 
 

@@ -9,13 +9,20 @@ import edu.monash.fit2099.vehicles.Truck;
 import edu.monash.fit2099.vehicles.Vehicle;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class AutoShowroom {
 
+    /**
+     * ArrayList for vehicle to contain all vehicles created in the AutoShowroom
+     */
     private ArrayList<Vehicle> vehicleArrayList;
     //task4(|||)
+    /**
+     * ArrayList for Buyer to contain all vehicles created in the AutoShowroom
+     */
     private ArrayList<Buyer> buyerArrayList;
 
     public AutoShowroom() {
@@ -174,6 +181,61 @@ public class AutoShowroom {
             System.out.println(buyer);
         }
 
+    }
+    public ArrayList<Float> bidsPrice(String vehicleId){
+        if (vehicleArrayList.isEmpty()){
+            return null;
+        }else{
+            HashMap bidHashMap = new HashMap();
+            for (Vehicle vehicle:vehicleArrayList){
+                if (vehicle.getVId()==vehicleId) {
+                    bidHashMap = vehicle.getBidsManager().getBidHashMap();
+                }
+            }
+
+            ArrayList<Float> price = new ArrayList<>();
+
+            for (Object bids: bidHashMap.values()){
+                Bid bid = (Bid)bids;
+                price.add(bid.getBidPrice());
+            }
+            price.sort(Comparator.naturalOrder());
+            return price;
+        }
+
+    }
+    public void lowestPrice(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter the vehicleID to get its lowest Price: ");
+        String vehicleId = scanner.nextLine();
+        System.out.println(bidsPrice(vehicleId).get(0));
+    }
+    public void highestPrice(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter the vehicleID to get its highest Price: ");
+        String vehicleId = scanner.nextLine();
+        System.out.println(bidsPrice(vehicleId).get(bidsPrice(vehicleId).size()-1));
+    }
+    public void deleteBid(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter the bid ID to delete it: ");
+        String bidId = scanner.nextLine();
+
+        boolean hasThisBid = false;
+        for (Vehicle vehicle:vehicleArrayList){
+            HashMap<String,Bid> bidHashMap = vehicle.getBidsManager().getBidHashMap();
+            for(String key: bidHashMap.keySet()){
+                Boolean isEqual=bidHashMap.get(key).equals(bidId);
+                if (isEqual) {
+                    bidHashMap.remove(key);
+                    System.out.println("you have delete this bid!");
+                    hasThisBid=true;
+                }
+            }
+        }
+        if (!hasThisBid){
+            System.out.println("There is no bid with this ID!");
+        }
     }
 
 

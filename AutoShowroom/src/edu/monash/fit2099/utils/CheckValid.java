@@ -6,11 +6,29 @@ import java.util.Date;
 
 public class CheckValid {
 
+    /**
+     * A under boundary for the year when checking the input Date
+     */
     private static final int START_YEAR_LIMIT = 1930;
+    /**
+     * A up boundary for the year when checking the input Date
+     */
     private static final int END_YEAR_LIMIT = 2021;
+    /**
+     * Buyers' name(given/family) should be at least x length
+     */
     private static final int NAME_UNDER_BOUNDARY = 2;
+    /**
+     * Buyers' name(given/family) should be up to x length
+     */
     private static final int NAME_UP_BOUNDARY = 15;
+    /**
+     * Vehicle's Maker and Model should both with length at least x
+     */
     private static final int V_UNDER_BOUNDARY = 3;
+    /**
+     * Vehicle's Maker and Model should both with length up to x
+     */
     private static final int V_UP_BOUNDARY = 15;
 
     /**

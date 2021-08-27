@@ -7,9 +7,21 @@ import edu.monash.fit2099.utils.GenerateId;
 import static edu.monash.fit2099.utils.CheckValid.vehicleValidLength;
 
 abstract public class Vehicle {
+    /**
+     * Vehicle's maker
+     */
     private String make;
+    /**
+     * Vehicle's model
+     */
     private String model;
+    /**
+     * Vehicle's ID
+     */
     private String vId;
+    /**
+     * bids' manager; BidsManager type (reference datatype)
+     */
     private BidsManager bidsManager;
     
     public Vehicle(String make, String model) throws VehicleException {

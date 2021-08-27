@@ -6,11 +6,20 @@ import static edu.monash.fit2099.utils.CheckValid.buyerValidLength;
 
 
 public class Buyer {
+    /**
+     * Unique buyerID
+     */
     private String buyerId;
     // Because some people have middle name, so, using "givenName" and "familyName" is exact.
     // And for different culture/country, people are confused about which name should be considered "first",so, it will create ambiguity.
     // Variable name of "firstName/lastName" is not meaningful enough.
+    /**
+     * Buyer's givenName
+     */
     private String givenName;
+    /**
+     * Buyer's familyName
+     */
     private String familyName;
     private Buyer(){}
 
