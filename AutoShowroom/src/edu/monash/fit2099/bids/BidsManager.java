@@ -1,9 +1,8 @@
 package edu.monash.fit2099.bids;
 
-import edu.monash.fit2099.bids.Bid;
 import edu.monash.fit2099.buyers.Buyer;
+import edu.monash.fit2099.exceptions.BidException;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BidsManager {
@@ -15,10 +14,9 @@ public class BidsManager {
     }
 
     //accepting the three parameter is requirement
-    public void addBid (String buyerId, float bidPrice, String bidDate){
-        Buyer buyer = new Buyer(buyerId);
+    public void addBid (Buyer buyer, float bidPrice, String bidDate) throws BidException {
         Bid bid = new Bid(buyer, bidPrice, bidDate);
-        bidHashMap.put(buyerId,bid);
+        bidHashMap.put(buyer.getBuyerId(),bid);
     }
 
     public HashMap<String, Bid> getBidHashMap() {

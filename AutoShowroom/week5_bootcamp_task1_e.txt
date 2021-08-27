@@ -1,0 +1,20 @@
+Advantages for throwing approach:
+
+1.Throwing an exception is the only clean way to report an error from a constructor.
+2. Obviously, this approach alerts the caller of the method to possible exception conditions so that the caller can handle them appropriately.
+
+Disadvantages for throwing approach:
+1. One disadvantage of exception handling is that it is difficult to adopt a good error handling strategy. Exceptions such as recovery from low capacity memory state, 
+write errors, and algorithm errors are not easily resolved.
+
+Advantages for static public method:
+
+1. It can improve the quality of code by making the code more readable, less coupled, and improves performance by caching.
+2. It gives you a lot more flexibility when it comes time to change the application (i.e. you can create new implementations without changing the dependent code)
+
+Disadvantages for static public method:
+
+1. once you make the constructor private to ensure that the class can only be instantiated using the constructor, you lost the power of inheritance 
+because classes without public or protected constructor cannot be extended.
+
+

@@ -1,5 +1,8 @@
 package edu.monash.fit2099.vehicles;
 
+import edu.monash.fit2099.exceptions.TruckException;
+import edu.monash.fit2099.exceptions.VehicleException;
+
 public class Truck extends Vehicle {
     private int capacity;
     private int wheels;
@@ -8,16 +11,20 @@ public class Truck extends Vehicle {
     private static final int CAPACITY_UNDER_BOUNDARY = 1;
     private static final int CAPACITY_UP_BOUNDARY = 15;
 
-    public Truck(String make, String model, int capacity, int wheels) {
+    public Truck(String make, String model, int capacity, int wheels) throws VehicleException {
         super(make, model);
-        this.capacity = capacity;
-        this.wheels = wheels;
+        if (setCapacity(capacity) && setWheels(wheels)) {
+        } else {
+            throw new TruckException("Incorrect capacity OR wheels");
+        }
     }
 
-    public Truck(String vId, String make, String model, int capacity, int wheels) {
+    public Truck(String vId, String make, String model, int capacity, int wheels) throws VehicleException {
         super(vId, make, model);
-        this.capacity = capacity;
-        this.wheels = wheels;
+        if (setCapacity(capacity) && setWheels(wheels)) {
+        } else {
+            throw new TruckException("Incorrect capacity OR wheels");
+        }
     }
 
     public boolean setCapacity(int capacity) {
@@ -37,6 +44,5 @@ public class Truck extends Vehicle {
             isValid=true;
         }
         return isValid;
-
     }
 }

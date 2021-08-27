@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class AutoShowroomDriver {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         AutoShowroom autoShowroom = new AutoShowroom();
 
         int selection;
@@ -49,7 +49,6 @@ public class AutoShowroomDriver {
         System.out.println("5) List Buyers");
         System.out.println("6) Add Bid");
         System.out.println("7) Exit");
-        int selection = Integer.parseInt(scanner.nextLine());
-        return selection;
+        return Integer.parseInt(scanner.nextLine());
     }
 }

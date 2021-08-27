@@ -1,9 +1,10 @@
 package edu.monash.fit2099.bids;
 
 import edu.monash.fit2099.buyers.Buyer;
-import edu.monash.fit2099.utility.GenerateId;
+import edu.monash.fit2099.exceptions.BidException;
+import edu.monash.fit2099.utils.GenerateId;
 
-import static edu.monash.fit2099.utility.CheckValid.*;
+import static edu.monash.fit2099.utils.CheckValid.*;
 
 public class Bid {
     private String bidId;
@@ -13,12 +14,16 @@ public class Bid {
 
 
 
-    public Bid(Buyer buyer, float bidPrice, String bidDate) {
+    public Bid(Buyer buyer, float bidPrice, String bidDate) throws BidException {
+        if (setBidDate(bidDate) && setBidPrice(bidPrice)) {
+            this.bidId = GenerateId.nextID();
+            this.buyer = buyer;
+        } else {
+            throw new BidException("Incorrect bid date OR bid price");
+        }
 
-        this.bidId = GenerateId.nextID();
-        this.buyer = buyer;
-        this.bidPrice = bidPrice;
-        this.bidDate = bidDate;
+
+
     }
 
     public void setBidId(String bidId) {

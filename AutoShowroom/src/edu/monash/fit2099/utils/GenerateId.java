@@ -1,4 +1,4 @@
-package edu.monash.fit2099.utility;
+package edu.monash.fit2099.utils;
 
 import java.util.Random;
 

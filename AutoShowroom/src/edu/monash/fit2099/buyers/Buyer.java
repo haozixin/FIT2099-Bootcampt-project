@@ -1,8 +1,8 @@
 
 package edu.monash.fit2099.buyers;
-import edu.monash.fit2099.utility.GenerateId;
+import edu.monash.fit2099.utils.GenerateId;
 
-import static edu.monash.fit2099.utility.CheckValid.buyerValidLength;
+import static edu.monash.fit2099.utils.CheckValid.buyerValidLength;
 
 
 public class Buyer {
@@ -12,19 +12,20 @@ public class Buyer {
     // Variable name of "firstName/lastName" is not meaningful enough.
     private String givenName;
     private String familyName;
+    private Buyer(){}
 
 
-    public Buyer(String newBuyerId) {
+    private Buyer(String newBuyerId) {
         this.buyerId = newBuyerId;
     }
 
-    public Buyer(String newBuyerId, String newGivenName, String newFamilyName) {
+    private Buyer(String newBuyerId, String newGivenName, String newFamilyName) {
         this.buyerId = newBuyerId;
         this.givenName = newGivenName;
         this.familyName = newFamilyName;
     }
 
-    public Buyer(String newGivenName, String newFamilyName){
+    private Buyer(String newGivenName, String newFamilyName){
         this.buyerId = GenerateId.nextID();
         this.givenName = newGivenName;
         this.familyName = newFamilyName;
@@ -45,6 +46,13 @@ public class Buyer {
             this.familyName = familyName;
         }
         return isValid;
+    }
+    public static Buyer getInstance(String givenName, String familyName){
+        Buyer buyer = new Buyer();
+        if (buyer.setGivenName(givenName) && buyer.setFamilyName(familyName) ){
+            return buyer;
+        }
+        return null;
     }
 
 
