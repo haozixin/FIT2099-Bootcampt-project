@@ -6,6 +6,11 @@ import edu.monash.fit2099.utils.GenerateId;
 
 import static edu.monash.fit2099.utils.CheckValid.vehicleValidLength;
 
+/**
+ * @author Zixin
+ * @version 5.0(week5-bootcamp-version)
+ * @see "https://lms.monash.edu/mod/page/view.php?id=8894316"
+ */
 abstract public class Vehicle {
     /**
      * Vehicle's maker
@@ -36,14 +41,11 @@ abstract public class Vehicle {
     public Vehicle(String vId, String make, String model) throws VehicleException{
         if (setMake(make) && setModel(model)) {
             bidsManager = new BidsManager();
-            vId = GenerateId.nextID();
+            this.vId = vId;
         } else {
             throw new VehicleException("Incorrect Maker OR Model");
         }
-        this.make = make;
-        this.model = model;
-        this.vId = vId;
-        bidsManager = new BidsManager();
+
     }
 
     public boolean setMake(String make) {

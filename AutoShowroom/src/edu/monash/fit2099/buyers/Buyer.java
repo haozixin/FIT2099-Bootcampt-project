@@ -4,7 +4,11 @@ import edu.monash.fit2099.utils.GenerateId;
 
 import static edu.monash.fit2099.utils.CheckValid.buyerValidLength;
 
-
+/**
+ * @author Zixin
+ * @version 5.0(week5-bootcamp-version)
+ * @see "https://lms.monash.edu/mod/page/view.php?id=8894316"
+ */
 public class Buyer {
     /**
      * Unique buyerID
@@ -59,13 +63,15 @@ public class Buyer {
     public static Buyer getInstance(String givenName, String familyName){
         Buyer buyer = new Buyer();
         if (buyer.setGivenName(givenName) && buyer.setFamilyName(familyName) ){
+            buyer.setBuyerId();
             return buyer;
         }
         return null;
     }
 
-
-
+    public void setBuyerId() {
+        buyerId = GenerateId.nextID();
+    }
 
     public String getBuyerId() {
         return buyerId;

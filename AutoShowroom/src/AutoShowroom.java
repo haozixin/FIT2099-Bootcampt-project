@@ -13,6 +13,11 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * @author Zixin
+ * @version 5.0(week5-bootcamp-version)
+ * @see "https://lms.monash.edu/mod/page/view.php?id=8894316"
+ */
 public class AutoShowroom {
 
     /**
@@ -33,7 +38,7 @@ public class AutoShowroom {
     public int getIntegerInput(String output, Scanner scanner){
         int number=0;
         do{
-            System.out.println(output);
+            System.out.print(output);
             try{
                 number = Integer.parseInt(scanner.nextLine());
             }catch (NumberFormatException e){
@@ -110,12 +115,10 @@ public class AutoShowroom {
         if (buyer != null) {
             buyerArrayList.add(buyer);
             System.out.println(buyer);
-        } else
+        } else{
             System.out.println("Something wrong with the buyer's values!!!");
+        }
 
-        buyerArrayList.add(buyer);
-
-        System.out.println(buyer);
     }
 
     public void createBid() {
@@ -128,17 +131,17 @@ public class AutoShowroom {
         String buyerId = scanner.nextLine();
         System.out.print("Bid price(unit is thousands): ");
         float price = Float.parseFloat(scanner.nextLine());
-        System.out.print("Bid date: ");
+        System.out.print("Bid date(format:yyyy-MM-dd): ");
         String date = scanner.nextLine();
 
 
 
         for(Vehicle pointer:vehicleArrayList){
-            if (vId.equals (pointer.getVId())){
+            if (vId.equals(pointer.getVId())){
 
                 try {
                     pointer.getBidsManager().addBid(findBuyer(buyerId),price,date);
-                    System.out.println("Have added this bid!");
+                    System.out.println("Have added/update this bid!");
                 }catch (BidException e){
                     System.out.println(e.getMessage());
                 }
@@ -188,7 +191,7 @@ public class AutoShowroom {
         }else{
             HashMap bidHashMap = new HashMap();
             for (Vehicle vehicle:vehicleArrayList){
-                if (vehicle.getVId()==vehicleId) {
+                if (vehicle.getVId().equals(vehicleId)) {
                     bidHashMap = vehicle.getBidsManager().getBidHashMap();
                 }
             }
@@ -214,26 +217,33 @@ public class AutoShowroom {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter the vehicleID to get its highest Price: ");
         String vehicleId = scanner.nextLine();
-        System.out.println(bidsPrice(vehicleId).get(bidsPrice(vehicleId).size()-1));
+        int index = (bidsPrice(vehicleId).size()-1);
+        System.out.println(bidsPrice(vehicleId).get(index));
     }
     public void deleteBid(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter the bid ID to delete it: ");
         String bidId = scanner.nextLine();
 
-        boolean hasThisBid = false;
+        boolean hasRemoved = false;
         for (Vehicle vehicle:vehicleArrayList){
             HashMap<String,Bid> bidHashMap = vehicle.getBidsManager().getBidHashMap();
-            for(String key: bidHashMap.keySet()){
-                Boolean isEqual=bidHashMap.get(key).equals(bidId);
-                if (isEqual) {
-                    bidHashMap.remove(key);
-                    System.out.println("you have delete this bid!");
-                    hasThisBid=true;
+
+            if (!hasRemoved){
+                for(String key: bidHashMap.keySet()){
+                    Boolean isEqual=bidHashMap.get(key).getBidId().equals(bidId);
+                    if (isEqual) {
+                        bidHashMap.remove(key);
+                        System.out.println("you have delete this bid!");
+                        hasRemoved=true;
+                    }
                 }
+            }else{
+
             }
+
         }
-        if (!hasThisBid){
+        if (!hasRemoved){
             System.out.println("There is no bid with this ID!");
         }
     }
@@ -249,7 +259,7 @@ public class AutoShowroom {
 
     public Buyer findBuyer(String buyerId){
         for (Buyer buyer:buyerArrayList){
-            if (buyer.getBuyerId()==buyerId){
+            if (buyer.getBuyerId().equals(buyerId)){
                 return buyer;
             }
         }

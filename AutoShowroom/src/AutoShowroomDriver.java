@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * @author Zixin
+ * @version 5.0(week5-bootcamp-version)
+ * @see "https://lms.monash.edu/mod/page/view.php?id=8894316"
+ */
 public class AutoShowroomDriver {
 
     public static void main(String[] args){
@@ -26,6 +31,7 @@ public class AutoShowroomDriver {
                     break;
                 case 6:
                     autoShowroom.createBid();
+                    break;
                 case 7:
                     autoShowroom.highestPrice();
                     break;

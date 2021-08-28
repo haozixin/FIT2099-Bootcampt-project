@@ -2,6 +2,11 @@ package edu.monash.fit2099.vehicles;
 
 import edu.monash.fit2099.exceptions.VehicleException;
 
+/**
+ * @author Zixin
+ * @version 5.0(week5-bootcamp-version)
+ * @see "https://lms.monash.edu/mod/page/view.php?id=8894316"
+ */
 public class Sedan extends Vehicle {
     /**
      * Minimum seat number for a Sedan
