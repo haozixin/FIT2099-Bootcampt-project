@@ -62,28 +62,30 @@ public class AutoShowroom {
      * Create Sedan by console I/O
      */
     public void createSedan(){
-        System.out.println("You are creating a Sedan, fill details please!");
-        System.out.print("Sedan maker: ");
-        Scanner scanner = new Scanner(System.in);
-        String maker = scanner.nextLine();
-        System.out.print("Sedan model: ");
-        String model = scanner.nextLine();
-
-
-        int seats = getIntegerInput("Sedan seats: ",scanner);
-
-
-
         Sedan sedan = null;
-        try {
-            sedan = new Sedan(maker,model,seats);
-            vehicleArrayList.add(sedan);
-        } catch (SedanException e){
-            System.out.println(e.getMessage());
-        }
-        catch (VehicleException e) {
-            System.out.println(e.getMessage());
-        }
+        System.out.println("You are creating a Sedan, fill details please!");
+        do {
+
+            System.out.print("Sedan maker: ");
+            Scanner scanner = new Scanner(System.in);
+            String maker = scanner.nextLine();
+            System.out.print("Sedan model: ");
+            String model = scanner.nextLine();
+
+
+            int seats = getIntegerInput("Sedan seats: ",scanner);
+
+
+            try {
+                sedan = new Sedan(maker,model,seats);
+                vehicleArrayList.add(sedan);
+            } catch (SedanException e){
+                System.out.println(e.getMessage());
+            }
+            catch (VehicleException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (sedan==null);
 
         showVehicle(sedan);
     }
@@ -92,21 +94,22 @@ public class AutoShowroom {
      * Create truck by console I/O
      */
     public void createTruck() {
-        System.out.println("You are creating a Truck, fill details please!");
-        System.out.print("Truck maker: ");
-        Scanner scanner = new Scanner(System.in);
-        String maker = scanner.nextLine();
-        System.out.print("Truck model: ");
-        String model = scanner.nextLine();
-
-
-        int wheels = getIntegerInput("Truck wheels: ",scanner);
-
-        int capacity = getIntegerInput("Truck capacity(integer/unit is tons): ",scanner);
-
-
         Truck truck = null;
+        System.out.println("You are creating a Truck, fill details please!");
         do {
+
+            System.out.print("Truck maker: ");
+            Scanner scanner = new Scanner(System.in);
+            String maker = scanner.nextLine();
+            System.out.print("Truck model: ");
+            String model = scanner.nextLine();
+
+
+            int wheels = getIntegerInput("Truck wheels: ",scanner);
+
+            int capacity = getIntegerInput("Truck capacity(integer/unit is tons): ",scanner);
+
+
             try {
                 truck = new Truck(maker,model,capacity,wheels);
                 vehicleArrayList.add(truck);
@@ -126,15 +129,17 @@ public class AutoShowroom {
      *
      */
     public void createBuyer(){
-        Scanner scanner = new Scanner(System.in);
+        Buyer buyer;
         System.out.println("You are creating a Buyer, fill details please!");
-        System.out.print("Given name: ");
-        String givenName = scanner.nextLine();
-        System.out.print("Family Name: ");
-        String familyName = scanner.nextLine();
-
-        Buyer buyer = Buyer.getInstance(givenName, familyName);
         do {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Given name: ");
+            String givenName = scanner.nextLine();
+            System.out.print("Family Name: ");
+            String familyName = scanner.nextLine();
+
+            buyer = Buyer.getInstance(givenName, familyName);
+
             if (buyer != null) {
                 buyerArrayList.add(buyer);
                 System.out.println(buyer);
@@ -149,9 +154,10 @@ public class AutoShowroom {
      * Create bid by console I/O
      */
     public void createBid() {
+        System.out.println("You are creating a bid, fill details please!");
+        int size = vehicleArrayList.size();
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("You are creating a bid, fill details please!");
         System.out.print("Vehicle ID: ");
         String vId = scanner.nextLine();
         System.out.print("Buyer ID: ");
@@ -162,13 +168,12 @@ public class AutoShowroom {
         String date = scanner.nextLine();
 
 
-
         for(Vehicle pointer:vehicleArrayList){
             if (vId.equals(pointer.getVId())){
 
                 try {
                     pointer.getBidsManager().addBid(findBuyer(buyerId),price,date);
-                    System.out.println("Have added/update this bid!");
+
                 }catch (BidException e){
                     System.out.println(e.getMessage());
                 }
@@ -176,10 +181,11 @@ public class AutoShowroom {
                 catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-
             }else {
             }
         }
+
+
     }
 
     /**
