@@ -25,10 +25,14 @@ public class Buyer {
      * Buyer's familyName
      */
     private String familyName;
+
+    /**
+     * Empty constructor
+     */
     private Buyer(){}
 
 
-    private Buyer(String newBuyerId) {
+/*    private Buyer(String newBuyerId) {
         this.buyerId = newBuyerId;
     }
 
@@ -42,8 +46,13 @@ public class Buyer {
         this.buyerId = GenerateId.nextID();
         this.givenName = newGivenName;
         this.familyName = newFamilyName;
-    }
+    }*/
 
+    /**
+     * Setter method - set buyer's given name
+     * @param givenName Buyer's given name
+     * @return Boolean value -- to judge if the input parameter is valid
+     */
     public boolean setGivenName(String givenName) {
         boolean isValid =  buyerValidLength(givenName);
         if (isValid){
@@ -53,6 +62,11 @@ public class Buyer {
 
     }
 
+    /**
+     * Setter method - set buyer's family name
+     * @param familyName Buyer's family name
+     * @return Boolean value -- to judge if the input parameter is valid
+     */
     public boolean setFamilyName(String familyName) {
         boolean isValid =  buyerValidLength(familyName);
         if (isValid){
@@ -60,6 +74,13 @@ public class Buyer {
         }
         return isValid;
     }
+
+    /**
+     * Static Factory Method
+     * @param givenName Buyer's given name
+     * @param familyName Buyer's family name
+     * @return Buyer type instance with initialed attributes
+     */
     public static Buyer getInstance(String givenName, String familyName){
         Buyer buyer = new Buyer();
         if (buyer.setGivenName(givenName) && buyer.setFamilyName(familyName) ){
@@ -69,14 +90,25 @@ public class Buyer {
         return null;
     }
 
+    /**
+     * Setter method - set buyer's id
+     */
     public void setBuyerId() {
         buyerId = GenerateId.nextID();
     }
 
+    /**
+     * Getter method - get buyer's id
+     * @return String data - buyer's id
+     */
     public String getBuyerId() {
         return buyerId;
     }
 
+    /**
+     * Override toString() to show objects information
+     * @return all information about a buyer
+     */
     @Override
     public String toString() {
         return "Buyer{" +

@@ -28,7 +28,13 @@ abstract public class Vehicle {
      * bids' manager; BidsManager type (reference datatype)
      */
     private BidsManager bidsManager;
-    
+
+    /**
+     * A Constructor to initialize the vehicle's maker and model
+     * @param make vehicle's maker
+     * @param model vehicle's model
+     * @throws VehicleException when the maker or model are not valid, it will return the exception message
+     */
     public Vehicle(String make, String model) throws VehicleException {
         if (setMake(make) && setModel(model)) {
             bidsManager = new BidsManager();
@@ -38,6 +44,14 @@ abstract public class Vehicle {
         }
 
     }
+
+    /**
+     * Vehicle constructor to initialize  its id, maker, and model
+     * @param vId vehicle id
+     * @param make vehicle's maker
+     * @param model vehicle's model
+     * @throws VehicleException when the maker or model are not valid, it will return the exception message
+     */
     public Vehicle(String vId, String make, String model) throws VehicleException{
         if (setMake(make) && setModel(model)) {
             bidsManager = new BidsManager();
@@ -48,6 +62,11 @@ abstract public class Vehicle {
 
     }
 
+    /**
+     * Setter to set maker (attribute value)
+     * @param make Truck's capacity
+     * @return boolean value -- to judge if the input parameter(it's maker) is valid
+     */
     public boolean setMake(String make) {
         boolean isValid =  vehicleValidLength(make);
         if (isValid){
@@ -56,6 +75,11 @@ abstract public class Vehicle {
         return isValid;
     }
 
+    /**
+     * Setter to set maker (attribute value)
+     * @param model Truck's capacity
+     * @return Boolean value -- to judge if the input parameter(it's model) is valid
+     */
     public boolean setModel(String model) {
         boolean isValid =  vehicleValidLength(model);
         if (isValid){
@@ -64,18 +88,19 @@ abstract public class Vehicle {
         return isValid;
     }
 
-    public String getMake() {
-        return make;
-    }
 
-    public String getModel() {
-        return model;
-    }
-
+    /**
+     * Getter method
+     * @return Vehicle id
+     */
     public String getVId() {
         return vId;
     }
 
+    /**
+     * Override toString() to show objects information
+     * @return all information about a vehicle
+     */
     @Override
     public String toString() {
         return "Vehicle[" +
@@ -85,7 +110,10 @@ abstract public class Vehicle {
                 ']';
     }
 
-
+    /**
+     * Getter method to get the vehicle's bids manager
+     * @return bidsManager
+     */
     public BidsManager getBidsManager() {
         return bidsManager;
     }

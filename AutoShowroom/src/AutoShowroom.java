@@ -30,11 +30,21 @@ public class AutoShowroom {
      */
     private ArrayList<Buyer> buyerArrayList;
 
+    /**
+     * Constructor to initialize two arraylist to contain buyers and vehicles
+     */
     public AutoShowroom() {
         vehicleArrayList = new ArrayList<>();
         buyerArrayList = new ArrayList<>();
     }
 
+    /**
+     * A method to prevents input values from being integers
+     * @param output it is the hint sentence(what you need input) from console I/O
+     * @param scanner system scanner
+     * @return int value if it is valid
+     * @exception NumberFormatException number format exception
+     */
     public int getIntegerInput(String output, Scanner scanner){
         int number=0;
         do{
@@ -48,6 +58,9 @@ public class AutoShowroom {
         return number;
     }
 
+    /**
+     * Create Sedan by console I/O
+     */
     public void createSedan(){
         System.out.println("You are creating a Sedan, fill details please!");
         System.out.print("Sedan maker: ");
@@ -75,6 +88,9 @@ public class AutoShowroom {
         showVehicle(sedan);
     }
 
+    /**
+     * Create truck by console I/O
+     */
     public void createTruck() {
         System.out.println("You are creating a Truck, fill details please!");
         System.out.print("Truck maker: ");
@@ -103,6 +119,10 @@ public class AutoShowroom {
         showVehicle(truck);
     }
 
+    /**
+     * Create buyer by console I/O
+     *
+     */
     public void createBuyer(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("You are creating a Buyer, fill details please!");
@@ -116,11 +136,14 @@ public class AutoShowroom {
             buyerArrayList.add(buyer);
             System.out.println(buyer);
         } else{
-            System.out.println("Something wrong with the buyer's values!!!");
+            System.out.println("Something wrong with the buyer's name values!!!");
         }
 
     }
 
+    /**
+     * Create bid by console I/O
+     */
     public void createBid() {
 
         Scanner scanner = new Scanner(System.in);
@@ -153,9 +176,12 @@ public class AutoShowroom {
             }else {
             }
         }
-
-
     }
+
+    /**
+     * Show vehicles with bid information
+     * @param vehicle the vehicle instance you want to show
+     */
     public void showVehicle(Vehicle vehicle){
         HashMap bidHashMap = vehicle.getBidsManager().getBidHashMap();
 
@@ -174,17 +200,30 @@ public class AutoShowroom {
         }
     }
 
+    /**
+     * Display fleet
+     */
     public void displayFleet(){
         for(Vehicle pointer:vehicleArrayList){
             showVehicle(pointer);
         }
     }
+
+    /**
+     * Display buyers
+     */
     public void displayBuyers(){
         for(Buyer buyer:buyerArrayList){
             System.out.println(buyer);
         }
 
     }
+
+    /**
+     * Get bids' price list from a vehicle
+     * @param vehicleId Vehicle id
+     * @return ArrayList containing all bids' price
+     */
     public ArrayList<Float> bidsPrice(String vehicleId){
         if (vehicleArrayList.isEmpty()){
             return null;
@@ -207,12 +246,20 @@ public class AutoShowroom {
         }
 
     }
+
+    /**
+     * Get the lowest bid price
+     */
     public void lowestPrice(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter the vehicleID to get its lowest Price: ");
         String vehicleId = scanner.nextLine();
         System.out.println(bidsPrice(vehicleId).get(0));
     }
+
+    /**
+     * Get the highest bid price
+     */
     public void highestPrice(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter the vehicleID to get its highest Price: ");
@@ -220,6 +267,10 @@ public class AutoShowroom {
         int index = (bidsPrice(vehicleId).size()-1);
         System.out.println(bidsPrice(vehicleId).get(index));
     }
+
+    /**
+     * Delete the bid base on input bid's id
+     */
     public void deleteBid(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter the bid ID to delete it: ");
@@ -248,7 +299,9 @@ public class AutoShowroom {
         }
     }
 
-
+    /**
+     * Print status
+     */
     public void printStatus() {
 
         System.out.println("Welcome to FIT2099 Showroom");
@@ -257,6 +310,11 @@ public class AutoShowroom {
 
     }
 
+    /**
+     * Find buyer by buyer id
+     * @param buyerId buyer's id
+     * @return buyer object/instance
+     */
     public Buyer findBuyer(String buyerId){
         for (Buyer buyer:buyerArrayList){
             if (buyer.getBuyerId().equals(buyerId)){

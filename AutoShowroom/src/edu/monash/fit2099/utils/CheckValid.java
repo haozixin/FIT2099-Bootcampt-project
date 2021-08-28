@@ -37,11 +37,11 @@ public class CheckValid {
     private static final int V_UP_BOUNDARY = 15;
 
     /**
-     *
-     * @param length input String value(input date) length
-     * @param sDate input String value(input date)
+     * A public static method to check if the date format is legal
+     * @param length Input String value(input date) length
+     * @param sDate Input String value(input date)
      * @param format "yyyy-MM-dd" / "yyyy-MM" and so on
-     * @return boolean value
+     * @return Boolean value - if it is valid, it will return true
      */
     public static boolean isLegalDate(int length, String sDate,String format) {
         //get the legal length of the specified format
@@ -63,6 +63,12 @@ public class CheckValid {
             return false;
         }
     }
+
+    /**
+     * A public static method to check if the year is in the range of (START_YEAR_LIMIT,END_YEAR_LIMIT)
+     * @param date String type - date (with a date format - yyyy-MM-dd)
+     * @return Boolean value - if it is valid, it will return true
+     */
     public static boolean yearRange(String date){
         String year = date.substring(0,4);
         int yearInt = Integer.parseInt(year);
@@ -73,6 +79,11 @@ public class CheckValid {
         }
     }
 
+    /**
+     * A public static method to check if the length of buyer's name(given+family) is valid
+     * @param inputValue Name or any string
+     * @return Boolean value - if it is valid, it will return true
+     */
     public static boolean buyerValidLength(String inputValue){
         boolean isValid=false;
         int length = inputValue.length();
@@ -81,6 +92,12 @@ public class CheckValid {
         }
         return isValid;
     }
+
+    /**
+     * A public static method to check if the length of vehicle's name(Sedan+Truck) is valid
+     * @param inputValue Any string need to check
+     * @return Boolean value - if it is valid, it will return true
+     */
     public static boolean vehicleValidLength(String inputValue){
         boolean isValid=false;
         int length = inputValue.length();

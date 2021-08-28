@@ -7,6 +7,11 @@ import java.util.Scanner;
  */
 public class AutoShowroomDriver {
 
+    /**
+     * main function - MenuItem
+     * @param args String[] args is the main method recognized by the system. If we do not do this, the system will not find the main method.
+     *             Of course, args is just a common variable name and can be defined arbitrarily.
+     */
     public static void main(String[] args){
         AutoShowroom autoShowroom = new AutoShowroom();
 
@@ -51,6 +56,10 @@ public class AutoShowroomDriver {
 
     }
 
+    /**
+     * Select Menu Item
+     * @return int number to decide which option
+     */
     public static int selectMenuItem(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("+----------------------------------------+");

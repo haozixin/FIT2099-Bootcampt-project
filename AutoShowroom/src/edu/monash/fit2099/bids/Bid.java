@@ -35,9 +35,7 @@ public class Bid {
      * @param buyer    Buyer type parameter
      * @param bidPrice float type - Bid price - unit is thousand
      * @param bidDate  String type - date of creating bid
-     * @return no return
-     * @throws BidException When bid date( yyyy{1930-2021}; MM{1-12}; dd{legal for each month}) or bid price(<0) is invalid, throw an exception message
-     * @exception
+     * @throws BidException When bid date yyyy--[1930-2021]; MM--[1-12]; dd--[legal for each month] or bid price(less than 0) is invalid, throw an exception message
      */
     public Bid(Buyer buyer, float bidPrice, String bidDate) throws BidException {
         if (setBidDate(bidDate) && setBidPrice(bidPrice)) {
@@ -50,14 +48,11 @@ public class Bid {
 
     }
 
-    public void setBidId(String bidId) {
-        this.bidId = bidId;
-    }
-
-    public void setBuyer(Buyer buyer) {
-        this.buyer = buyer;
-    }
-
+    /**
+     *
+     * @param bidPrice float number - price of the bid
+     * @return Boolean value -- to judge if the input parameter is valid
+     */
     public boolean setBidPrice(float bidPrice) {
         boolean isValid = false;
         if (bidPrice >= 0) {
@@ -67,6 +62,10 @@ public class Bid {
         return isValid;
     }
 
+    /**
+     * @param bidDate The date of the bid created
+     * @return Boolean value -- to judge if the input parameter(the date) is valid
+     */
     public boolean setBidDate(String bidDate) {
         boolean isValid = false;
         boolean isLegalDate = isLegalDate(bidDate.length(), bidDate, "yyyy-MM-dd");
@@ -80,22 +79,27 @@ public class Bid {
 
     }
 
+    /**
+     * Getter methods
+     * @return bid's ID
+     */
     public String getBidId() {
         return bidId;
     }
 
-    public Buyer getBuyer() {
-        return buyer;
-    }
-
+    /**
+     * Getter methods
+     * @return bid's price
+     */
     public float getBidPrice() {
         return bidPrice;
     }
 
-    public String getBidDate() {
-        return bidDate;
-    }
 
+    /**
+     * Override toString() to show objects information
+     * @return All information about a bid
+     */
     @Override
     public String toString() {
         return "Bid{" +
