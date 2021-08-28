@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"edu.monash.fit2099.bids"},{"l":"edu.monash.fit2099.buyers"},{"l":"edu.monash.fit2099.exceptions"},{"l":"edu.monash.fit2099.utils"},{"l":"edu.monash.fit2099.vehicles"},{"l":"所有程序包","u":"allpackages-index.html"}];updateSearchResults();
