@@ -106,15 +106,17 @@ public class AutoShowroom {
 
 
         Truck truck = null;
-        try {
-            truck = new Truck(maker,model,capacity,wheels);
-            vehicleArrayList.add(truck);
-        } // small scope first
-        catch (TruckException e){
-            System.out.println(e.getMessage());
-        } catch (VehicleException e) {
-            System.out.println(e.getMessage());
-        }
+        do {
+            try {
+                truck = new Truck(maker,model,capacity,wheels);
+                vehicleArrayList.add(truck);
+            } // small scope first
+            catch (TruckException e){
+                System.out.println(e.getMessage());
+            } catch (VehicleException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (truck == null);
 
         showVehicle(truck);
     }
@@ -132,12 +134,14 @@ public class AutoShowroom {
         String familyName = scanner.nextLine();
 
         Buyer buyer = Buyer.getInstance(givenName, familyName);
-        if (buyer != null) {
-            buyerArrayList.add(buyer);
-            System.out.println(buyer);
-        } else{
-            System.out.println("Something wrong with the buyer's name values!!!");
-        }
+        do {
+            if (buyer != null) {
+                buyerArrayList.add(buyer);
+                System.out.println(buyer);
+            } else{
+                System.out.println("Something wrong with the buyer's name values!!!");
+            }
+        } while (buyer==null);
 
     }
 
